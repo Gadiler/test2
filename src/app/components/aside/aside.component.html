@@ -1,0 +1,93 @@
+<ng-container *ngIf="areas !== undefined && areas.length>0; then thenTemplate; else elseTemplate">
+</ng-container>
+<ng-template #thenTemplate>
+    <!-- style="margin-left:auto;width:35%;" -->
+    <section>
+        <div id="accordion" *ngFor="let a of areas">
+
+            <div>
+                <div class="card-header" id="headingOne">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link" data-toggle="collapse" [attr.data-target]="'#collapseOne'+a.id"
+                            aria-expanded="false" aria-controls="collapseOne"
+                            (click)="setImagePath('/assets/home_image.jpg');">
+                            <p> {{a.name}}</p>
+                        </button>
+                    </h5>
+                </div>
+
+                <div id="collapseOne{{a.id}}" class="collapse in show" aria-labelledby="headingOne"
+                    data-parent="#accordion" aria-expanded="true">
+                    <div class="card-body" *ngFor="let p of a.points">
+                        <!-- Start Area's cards -->
+
+                        <!-- Cards Start -->
+                        <section class="details-card">
+                            <div class="container">
+                                <div class="row">
+                                    <div>
+                                        <div class="card-content">
+                                            <div id="carouselExampleInterval{{p.id}}" class="carousel slide"
+                                                data-bs-interval="false" data-bs-ride="carousel">
+                                                <div class="carousel-inner" role="listbox">
+                                                    <a class="carousel-item active" type="button"
+                                                        (click)="setImagePath('/assets/images/'+p.id+'/1.jpg');">
+                                                        <img src="/assets/images/{{p.id}}/1.jpg" class="d-block w-100">
+                                                    </a>
+                                                    <a class="carousel-item" type="button"
+                                                        (click)="setImagePath('/assets/images/'+p.id+'/2.jpg');">
+                                                        <img src="/assets/images/{{p.id}}/2.jpg" class="d-block w-100">
+                                                    </a>
+                                                    <a *ngIf="haveImage(3, p)" class="carousel-item" type="button"
+                                                        (click)="setImagePath('/assets/images/'+p.id+'/3.jpg');">
+                                                        <img src="/assets/images/{{p.id}}/3.jpg" class="d-block w-100">
+                                                    </a>
+                                                    <a *ngIf="haveImage(4, p)" class="carousel-item" type="button"
+                                                        (click)="setImagePath('/assets/images/'+p.id+'/4.jpg');">
+                                                        <img src="/assets/images/{{p.id}}/4.jpg" class="d-block w-100">
+                                                    </a>
+                                                </div>
+                                                <button class="carousel-control-prev" type="button"
+                                                    [attr.data-bs-target]="'#carouselExampleInterval'+p.id"
+                                                    (click)="setHomeImage(p.id, 'prev', p.numOfImages);"
+                                                    data-bs-slide="prev">
+                                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                                    <span class="sr-only">Previous</span>
+                                                </button>
+                                                <button class="carousel-control-next" type="button"
+                                                    [attr.data-bs-target]="'#carouselExampleInterval'+p.id"
+                                                    (click)="setHomeImage(p.id, 'next', p.numOfImages);"
+                                                    data-bs-slide="next">
+                                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                                    <span class="sr-only">Next</span>
+                                                </button>
+                                            </div>
+                                            <!-- ------------------------------- -->
+                                            <!-- </div> -->
+                                            <div class="card-desc">
+                                                <h3>Point</h3>
+                                                <p>שם הנק': {{p.name}}</p>
+                                                <div class="dropdown-divider"></div>
+                                                <p>מרחב: {{p.areaName}}</p>
+                                                <p><a>:נ.צ</a><br>{{p.lmHeight}} \ {{p.lmWidth}}  </p>
+                                                <div class="dropdown-divider"></div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <!-- Cards End -->
+
+                        <!-- End Area's cards -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</ng-template>
+<ng-template #elseTemplate>
+    <app-empty-view msg="No Points in here!"></app-empty-view>
+</ng-template>

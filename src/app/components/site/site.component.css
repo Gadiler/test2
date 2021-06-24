@@ -1,0 +1,42 @@
+section{
+    height: 100%;
+    text-align: center;
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(9, 1fr);
+
+}
+main{
+    display: inline-block;
+    justify-content:center;
+    align-items:center;
+    background-color: #ebecdc;
+    overflow: auto;
+    grid-column: span 9;
+    grid-row: span 9;
+}
+  
+aside{
+    background-color: #ebecdc;
+    display: inline-block;
+    overflow: auto;
+    text-align: center;
+    grid-column: span 3;
+    grid-row: span 9;
+}
+header{
+    grid-row: span 1;
+    grid-column: span 9;
+    color:white;
+    justify-content:center;
+    align-items:center;
+    padding: 10px;
+    position: flex;
+    display: flex;
+  }
+
+::-webkit-scrollbar {
+    display: none;
+  }
+

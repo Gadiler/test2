@@ -1,0 +1,21 @@
+<div class="section">
+    <ng-container *ngIf="path === '' then thenTemplate; else elseTemplate">
+    </ng-container>
+    <ng-template #thenTemplate>
+        <header class="header">
+            <app-search></app-search>
+        </header>
+        <footer class="footer">
+            <app-image-view path="/assets/home_image.jpg" width="700"></app-image-view>
+
+        </footer>
+    </ng-template>
+    <ng-template #elseTemplate>
+        <header class="header">
+            <app-search></app-search>
+        </header>
+        <footer class="footer">
+            <app-image-view></app-image-view>
+        </footer>
+    </ng-template>
+</div>

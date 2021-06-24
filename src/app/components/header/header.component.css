@@ -1,0 +1,21 @@
+/* Navigation Bar Css Start */
+
+.social-part .fa{
+    padding-right:20px;
+}
+ul li a{
+    margin-right: 20px;
+}
+
+.sticky {
+position: sticky;
+  top: 0;
+  z-index: 2;
+}
+/* Navigation Bar Css End */
+div{
+  display: block;
+  background-color: #D9E4DD;
+  justify-content:center;
+  
+}
